@@ -1,9 +1,11 @@
 #include "shell.h"
 
 /**
- * _myhistory - display history
- * @info: info
- *  Return: 0
+ * _myhistory - displays the history list, one command by line, preceded
+ *              with line numbers, starting at 0.
+ * @info: Structure containing potential arguments. Used to maintain
+ *        constant function prototype.
+ *  Return: Always 0
  */
 int _myhistory(info_t *info)
 {
@@ -12,9 +14,10 @@ int _myhistory(info_t *info)
 }
 
 /**
- * unset_alias - unset alias
- * @info: info
- * @str: string
+ * unset_alias - sets alias to string
+ * @info: parameter struct
+ * @str: the string alias
+ *
  * Return: Always 0 on success, 1 on error
  */
 int unset_alias(info_t *info, char *str)
@@ -34,10 +37,11 @@ int unset_alias(info_t *info, char *str)
 }
 
 /**
- * set_alias - set alias
- * @info: info
- * @str: string
- * Return: 0, 1
+ * set_alias - sets alias to string
+ * @info: parameter struct
+ * @str: the string alias
+ *
+ * Return: Always 0 on success, 1 on error
  */
 int set_alias(info_t *info, char *str)
 {
@@ -54,9 +58,10 @@ int set_alias(info_t *info, char *str)
 }
 
 /**
- * print_alias - print alias
- * @node: node
- * Return: 0 , 1
+ * print_alias - prints an alias string
+ * @node: the alias node
+ *
+ * Return: Always 0 on success, 1 on error
  */
 int print_alias(list_t *node)
 {
@@ -66,7 +71,7 @@ int print_alias(list_t *node)
 	{
 		p = _strchr(node->str, '=');
 		for (a = node->str; a <= p; a++)
-		_putchar(*a);
+			_putchar(*a);
 		_putchar('\'');
 		_puts(p + 1);
 		_puts("'\n");
@@ -76,9 +81,10 @@ int print_alias(list_t *node)
 }
 
 /**
- * _myalias - mimics alias
- * @info: info
- *  Return: 0
+ * _myalias - mimics the alias builtin (man alias)
+ * @info: Structure containing potential arguments. Used to maintain
+ *          constant function prototype.
+ *  Return: Always 0
  */
 int _myalias(info_t *info)
 {
